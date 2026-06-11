@@ -25,13 +25,17 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   body {
     background: var(--cream);
     color: var(--dark);
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     line-height: 1.7;
-    overflow-x: hidden;
   }
 
   /* HERO */
@@ -282,9 +286,10 @@
   @media (max-width: 700px) {
     .about-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-divider { display: none; }
-    .hero-stats { gap: 28px; }
-    .hero-stat-num { font-size: 32px; }
-    section { padding: 64px 20px; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .hero-stat-num { font-size: 30px; }
+    section { padding: 56px 16px; }
+    .container { padding: 0; }
     .diagnosis-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
     .market-facts { grid-template-columns: 1fr 1fr; }
@@ -292,20 +297,21 @@
     .rev-now-later { grid-template-columns: 1fr; }
     .timeline::before { left: 20px; }
     .tl-dot { width: 40px; height: 40px; font-size: 15px; }
-    .timeline-item { gap: 20px; }
+    .timeline-item { gap: 16px; }
     .tl-content h3 { font-size: 22px; }
-    .funnel-step { padding: 18px 20px; }
-    .funnel-step.f2 { width: 100%; }
-    .funnel-step.f3 { width: 100%; }
-    .funnel-step.f4 { width: 100%; }
-    .funnel-step.f5 { width: 100%; }
-    .flagship-case { padding: 28px 24px; }
-    .flagship-case p { font-size: 18px; }
-    .rev-card { padding: 28px 24px; }
-    .price-card { padding: 32px 24px; }
+    .funnel-visual { padding: 0 4px; }
+    .funnel-step { padding: 16px 18px; width: 100% !important; }
+    .flagship-case { padding: 24px 20px; }
+    .flagship-case p { font-size: 17px; }
+    .rev-card { padding: 24px 20px; }
+    .rev-main-num { font-size: 38px; }
+    .price-card { padding: 28px 20px; }
     .case-result { gap: 16px; }
     .tl-tags { gap: 6px; }
     .tl-tag { font-size: 11px; padding: 4px 10px; }
+    .lead { font-size: 15px; }
+    h2 { font-size: 28px; }
+    .cta-btn { padding: 16px 36px; font-size: 13px; }
   }
 
   .about-left h2 { margin-bottom: 20px; }
@@ -580,10 +586,6 @@
     margin-top: 48px;
   }
 
-  @media (max-width: 600px) {
-    .rev-now-later { grid-template-columns: 1fr; }
-    .about-inner { grid-template-columns: 1fr; gap: 40px; }
-  }
 
   .rev-card {
     border-radius: 20px;
@@ -643,7 +645,9 @@
   .rev-breakdown li {
     display: flex;
     justify-content: space-between;
-    font-size: 13.5px;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
     color: var(--mid);
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
@@ -658,6 +662,8 @@
     border-bottom: none;
     font-weight: 600;
     color: var(--dark);
+    flex-direction: column;
+    gap: 4px;
   }
 
   .rev-card.later .rev-breakdown li:last-child {
@@ -666,6 +672,14 @@
 
   .rev-breakdown li span {
     font-weight: 500;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .rev-breakdown li:last-child span {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
   }
 
   /* PRODUCT FUNNEL */
@@ -684,12 +698,11 @@
   .funnel-step {
     width: 100%;
     max-width: 700px;
-    padding: 24px 40px;
+    padding: 20px 24px;
     border-radius: 16px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 3px;
     transition: transform 0.2s ease;
     cursor: default;
@@ -698,27 +711,28 @@
   .funnel-step:hover { transform: scale(1.01); }
 
   .funnel-step.f1 { background: rgba(92, 112, 80, 0.08); border: 1px solid rgba(92, 112, 80, 0.15); }
-  .funnel-step.f2 { background: rgba(92, 112, 80, 0.14); border: 1px solid rgba(92, 112, 80, 0.2); width: 92%; }
-  .funnel-step.f3 { background: rgba(201, 169, 110, 0.1); border: 1px solid rgba(201, 169, 110, 0.2); width: 84%; }
-  .funnel-step.f4 { background: rgba(196, 113, 74, 0.1); border: 1px solid rgba(196, 113, 74, 0.2); width: 72%; }
-  .funnel-step.f5 { background: rgba(196, 113, 74, 0.18); border: 1px solid rgba(196, 113, 74, 0.3); width: 56%; }
+  .funnel-step.f2 { background: rgba(92, 112, 80, 0.14); border: 1px solid rgba(92, 112, 80, 0.2); }
+  .funnel-step.f3 { background: rgba(201, 169, 110, 0.1); border: 1px solid rgba(201, 169, 110, 0.2); }
+  .funnel-step.f4 { background: rgba(196, 113, 74, 0.1); border: 1px solid rgba(196, 113, 74, 0.2); }
+  .funnel-step.f5 { background: rgba(196, 113, 74, 0.18); border: 1px solid rgba(196, 113, 74, 0.3); }
 
   .funnel-step-left h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 19px;
     font-weight: 600;
     color: var(--dark);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .funnel-step-left p {
     font-size: 12.5px;
     color: var(--light-text);
+    line-height: 1.5;
   }
 
   .funnel-price {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--terracotta);
     white-space: nowrap;
@@ -1116,7 +1130,7 @@
     </div>
 
     <p class="lead fade-up" style="margin-bottom:0;">
-      Топовые онлайн-школы йоги собирают <strong>2 000–20 000 участников</strong> в клубах.
+      Топовые онлайн-школы йоги собирают <strong>2&nbsp;000–20&nbsp;000&nbsp;участников</strong> в клубах.
       Ваша база и экспертность — уже на уровне. Не хватает только системы и человека,
       который возьмёт всё это на себя.
     </p>
