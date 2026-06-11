@@ -300,7 +300,12 @@
     .timeline-item { gap: 16px; }
     .tl-content h3 { font-size: 22px; }
     .funnel-visual { padding: 0 4px; }
-    .funnel-step { padding: 16px 18px; width: 100% !important; }
+    .funnel-step {
+      padding: 16px 18px;
+      width: 100% !important;
+      grid-template-columns: 1fr;
+    }
+    .funnel-price { font-size: 17px; }
     .flagship-case { padding: 24px 20px; }
     .flagship-case p { font-size: 17px; }
     .rev-card { padding: 24px 20px; }
@@ -700,9 +705,10 @@
     max-width: 700px;
     padding: 20px 24px;
     border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
     margin-bottom: 3px;
     transition: transform 0.2s ease;
     cursor: default;
@@ -1265,7 +1271,7 @@
           <li><span>Марафоны / интенсивы</span> <span>+200 000₽/мес</span></li>
           <li><span>Курсы 30–50к (2–3 в год)</span> <span>+150 000₽/мес</span></li>
           <li><span>VIP-сопровождение</span> <span>+100 000₽/мес</span></li>
-          <li><strong>Итого</strong> <strong>~1 050 000–2 000 000₽/мес</strong></li>
+          <li><strong>Итого</strong> <strong>1–2&nbsp;млн ₽/мес</strong></li>
         </ul>
       </div>
     </div>
